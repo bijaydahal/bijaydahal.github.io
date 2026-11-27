@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bijay Dahal · Data Analyst · AI Portfolio</title>
+<meta name="description" content="Portfolio of Bijay Dahal, data analyst learning to lead with AI. Four artifacts on AI history, chatbot design, self-assessment critique and machine-learning data challenges.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7F9; --surface:#FFFFFF; --ink:#14213D; --muted:#56607A; --rule:#DCE0E8;
+  --accent:#2F6FB5; --warm:#C9711F; --track:#E7EAF0;
+  --sans:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0F1626; --surface:#162036; --ink:#E7ECF5; --muted:#9AA6BE; --rule:#2A3550;
+    --accent:#7FAEE6; --warm:#E9A25E; --track:#24304A; color-scheme:dark;
+  }
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--serif);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3,h4,h5,nav,.sans{font-family:var(--sans)}
+h2,h3,h4,h5{line-height:1.2;margin:0}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--bg);padding:.5rem .9rem;font:600 .9rem var(--sans);z-index:10}
+.skip:focus{left:1rem;top:1rem}
+
+/* Header */
+header.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem 1rem;padding:1.5rem 0;border-bottom:1px solid var(--rule)}
+.brand{font:600 1rem var(--sans);color:var(--ink);text-decoration:none}
+nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;margin:0;padding:0;font-size:.95rem}
+nav a{color:var(--muted);text-decoration:none;padding:.2rem 0}
+nav a:hover{color:var(--ink)}
+
+/* Intro */
+.intro{padding:5rem 0 3.5rem;display:grid;grid-template-columns:1fr;gap:1.5rem}
+.intro h1{font-weight:700;font-size:clamp(2.4rem,6vw,4.25rem);line-height:1.02;letter-spacing:-.025em;margin:0;max-width:14ch}
+.intro p{font-size:1.2rem;max-width:58ch;color:var(--muted);margin:0}
+.intro .links{font:500 .95rem var(--sans);display:flex;flex-wrap:wrap;gap:1.25rem}
+@media (max-width:600px){.intro{padding:3rem 0 2.5rem}}
+
+/* Section heads */
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;border-top:2px solid var(--ink);padding-top:1rem;margin-bottom:1rem}
+.sec-head h2{font-size:1.1rem}
+.sec-head span{font:500 .9rem var(--sans);color:var(--muted)}
+.block{padding:0 0 3.5rem}
+
+/* Bio */
+.bio{display:grid;grid-template-columns:minmax(0,1fr);gap:2rem;padding-top:1rem}
+@media (min-width:860px){.bio{grid-template-columns:minmax(0,1fr) 300px;gap:3rem}}
+.bio-text p{margin:0 0 1.1rem;max-width:64ch}
+.facts{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:1.25rem 1.4rem;font:400 .9rem/1.5 var(--sans);align-self:start}
+.facts dl{margin:0}
+.facts dt{font-weight:600;color:var(--ink);margin-top:.85rem}
+.facts dt:first-child{margin-top:0}
+.facts dd{margin:0;color:var(--muted)}
+
+/* Value proposition */
+.pvp{font:600 clamp(1.35rem,3vw,1.85rem)/1.3 var(--sans);letter-spacing:-.015em;max-width:30ch;margin:1.25rem 0 2rem}
+.pillars{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:1rem;font-family:var(--sans);font-size:.95rem;line-height:1.5}
+@media (min-width:760px){.pillars{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.pillars li{border-top:2px solid var(--accent);padding-top:.7rem}
+.pillars h3{font-size:1rem;margin-bottom:.35rem}
+.pillars p{margin:0;color:var(--muted)}
+
+/* Audience */
+.aud{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:1rem;font-family:var(--sans);font-size:.93rem;line-height:1.5}
+@media (min-width:760px){.aud{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.aud li{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:1.1rem 1.25rem}
+.aud .tag{display:block;font:600 .72rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.aud li.sec .tag{color:var(--warm)}
+.aud h3{font-size:1.02rem;margin-bottom:.45rem}
+.aud p{margin:0;color:var(--muted)}
+.aud-note{max-width:64ch;margin:1.5rem 0 0;color:var(--muted)}
+
+/* Work */
+.case{display:grid;grid-template-columns:minmax(0,1fr);gap:2rem;padding:3.5rem 0;border-bottom:1px solid var(--rule)}
+.case:last-of-type{border-bottom:0}
+@media (min-width:860px){.case{grid-template-columns:260px minmax(0,1fr);gap:3rem}}
+@media (max-width:600px){.case{padding:2.5rem 0;gap:1.25rem}}
+@media (min-width:860px){.case-meta{position:sticky;top:1.5rem;align-self:start}}
+.case-meta .eyebrow{display:inline-block;font:600 .78rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:.35rem .7rem;margin:0 0 .9rem}
+.case-meta h3{font-size:1.65rem;letter-spacing:-.01em;margin-bottom:.75rem}
+.case-meta dl{margin:0;font:400 .9rem/1.5 var(--sans);color:var(--muted)}
+.case-meta dt{color:var(--ink);font-weight:600;margin-top:.9rem}
+.case-meta dd{margin:0}
+.toc{list-style:none;margin:1.25rem 0 0;padding:1rem 0 0;border-top:1px solid var(--rule);font:500 .85rem/1.9 var(--sans)}
+.toc a{color:var(--muted);text-decoration:none}
+.toc a:hover{color:var(--accent)}
+.case-body{max-width:68ch}
+.case-body p{margin:0 0 1.1rem}
+.case-body > section{margin-top:2.25rem}
+.case-body > section:first-child{margin-top:0}
+.case-body h4{font:600 .8rem/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:0 0 .9rem;padding-bottom:.55rem;border-bottom:1px solid var(--rule)}
+.case-body h5{font:600 1.05rem var(--sans);margin:1.5rem 0 .5rem}
+.case-body h4 + h5{margin-top:.4rem}
+.lede{font-size:1.25rem;line-height:1.5}
+.btn{display:inline-block;font:600 .95rem var(--sans);padding:.65rem 1rem;border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;border-radius:6px;margin:.25rem .5rem .25rem 0}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn:hover{border-color:var(--accent)}
+
+/* Tools chips */
+.chips{list-style:none;margin:.25rem 0 1rem;padding:0;display:flex;flex-wrap:wrap;gap:.45rem;font:500 .85rem/1 var(--sans)}
+.chips li{border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:.45rem .75rem;color:var(--ink)}
+
+/* Value proposition per artifact */
+.vp{display:grid;grid-template-columns:minmax(0,1fr);gap:1rem;font-family:var(--sans);font-size:.95rem;line-height:1.55}
+@media (min-width:600px){.vp{grid-template-columns:1fr 1fr}}
+.vp div{border-top:2px solid var(--warm);padding-top:.6rem}
+.vp div+div{border-top-color:var(--accent)}
+.vp h5{font:600 .95rem var(--sans);margin:0 0 .35rem}
+.vp p{margin:0;color:var(--muted)}
+.vp p + p{margin-top:.6rem}
+
+/* References */
+ol.refs{margin:0;padding-left:1.4rem;font:400 .86rem/1.55 var(--sans);color:var(--muted)}
+ol.refs li{margin-bottom:.55rem;padding-left:.2rem}
+ol.refs em{color:var(--ink)}
+ol.refs a{word-break:break-word}
+
+/* Timeline slides */
+.slides{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.75rem;margin:1.5rem 0}
+.slides figure{flex:0 0 min(86%,560px);margin:0;scroll-snap-align:start}
+.slides img{border-radius:6px;border:1px solid var(--rule);aspect-ratio:16/9;object-fit:cover;width:100%}
+.slides figcaption{font:400 .85rem var(--sans);color:var(--muted);margin-top:.4rem}
+
+/* Process steps */
+ol.steps{padding-left:1.4rem;margin:0 0 1.2rem}
+ol.steps li{margin-bottom:.6rem;padding-left:.25rem}
+ol.steps strong{font-family:var(--sans);font-weight:600}
+blockquote.bot{margin:1.5rem 0;padding:1.1rem 1.25rem;background:var(--surface);border:1px solid var(--rule);border-radius:14px 14px 14px 4px;font-family:var(--sans);font-size:.98rem;line-height:1.55;max-width:44ch}
+blockquote.bot cite{display:block;font-style:normal;font-size:.8rem;color:var(--muted);margin-bottom:.35rem}
+
+/* Self-assessment dot plot */
+.plot{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:1.5rem;margin:1.5rem 0;font-family:var(--sans)}
+.plot h6{font:600 .95rem var(--sans);margin:0 0 .75rem}
+.plot h6:not(:first-of-type){margin-top:1.6rem}
+.row{display:grid;grid-template-columns:minmax(0,11.5rem) minmax(0,1fr) 2.6rem;align-items:center;gap:.75rem;font-size:.86rem;padding:.3rem 0}
+.row .lab{color:var(--ink);line-height:1.25}
+.row .val{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.track{position:relative;height:6px;background:var(--track);border-radius:3px}
+.track i{position:absolute;top:50%;width:13px;height:13px;border-radius:50%;transform:translate(-50%,-50%);background:var(--accent)}
+.track b{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--accent);opacity:.25}
+.row.grow .track i{background:var(--warm)}
+.row.grow .track b{background:var(--warm)}
+.legend{display:flex;gap:1.25rem;font-size:.8rem;color:var(--muted);margin-top:1.1rem;flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.4rem;vertical-align:-1px;background:var(--accent)}
+.legend span.g::before{background:var(--warm)}
+@media (max-width:520px){.plot{padding:1.1rem}.row{grid-template-columns:minmax(0,1fr) 2.4rem}.row .lab{grid-column:1/-1}}
+.pull{font:600 1.35rem/1.35 var(--sans);letter-spacing:-.01em;border-left:3px solid var(--accent);padding-left:1rem;margin:2rem 0}
+
+/* Scenarios */
+.scen{list-style:none;margin:1.25rem 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:1rem;font-family:var(--sans);font-size:.93rem;line-height:1.5}
+.scen li{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:1.1rem 1.25rem}
+.scen .num{display:block;font:600 .75rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.45rem}
+.scen h6{font:600 1.02rem/1.3 var(--sans);margin:0 0 .55rem}
+.scen p{margin:0 0 .5rem;color:var(--muted)}
+.scen p:last-child{margin-bottom:0}
+.scen strong{color:var(--ink);font-weight:600}
+
+/* Footer */
+footer{padding:4rem 0 3rem;border-top:2px solid var(--ink);margin-top:3rem}
+footer h2{font-size:clamp(1.6rem,3.5vw,2.25rem);letter-spacing:-.02em;margin-bottom:.75rem}
+footer p{color:var(--muted);max-width:52ch}
+footer .links{font:500 1rem var(--sans);display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1rem}
+.fine{font:400 .8rem var(--sans);color:var(--muted);margin-top:3rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to work</a>
+<div class="wrap">
+
+<header class="top">
+  <a class="brand" href="#">Bijay Dahal</a>
+  <nav aria-label="Main"><ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#value">Value</a></li>
+    <li><a href="#audience">Audience</a></li>
+    <li><a href="#timeline">Artifact 1</a></li>
+    <li><a href="#chatbot">Artifact 2</a></li>
+    <li><a href="#assessment">Artifact 3</a></li>
+    <li><a href="#scenarios">Artifact 4</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul></nav>
+</header>
+
+<section class="intro" aria-label="Introduction">
+  <h1>Data analyst learning to lead with AI.</h1>
+  <p>I turn messy operations data into clear answers people can act on. This portfolio shows how I’m bringing that same discipline to artificial intelligence: understanding where it came from, building with it, and questioning the data behind it.</p>
+  <div class="links">
+    <a href="mailto:bijayraj.dahal@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/bijaydahal">LinkedIn</a>
+    <a href="https://github.com/bijaydahal">GitHub</a>
+  </div>
+</section>
+
+<main>
+
+  <!-- PROFESSIONAL BIO -->
+  <section class="block" id="about" aria-labelledby="about-h">
+    <div class="sec-head"><h2 id="about-h">Professional bio</h2><span>About me</span></div>
+    <div class="bio">
+      <div class="bio-text">
+        <p>Bijay Dahal is a data analyst with more than nine years of experience turning operational data into decisions for sales, finance and operations teams. He builds dashboards and automated reporting with SQL, Python, Excel and Tableau, and he is known for checking how a number was measured before anyone acts on it.</p>
+        <p>Bijay holds an M.S. in Industrial Engineering from Southern Illinois University Edwardsville, where he built a machine-learning framework for glucose control in Type 1 diabetes research and taught Excel VBA and production planning. He is a certified Six Sigma Green Belt and holds the Google Data Analytics Professional Certificate.</p>
+        <p>He is now studying how AI and machine learning change the way organizations work, from the history of the field to chatbot design, data quality, fairness and privacy. The four artifacts below document that learning and the analyst’s habits he brings to it.</p>
+      </div>
+      <aside class="facts" aria-label="Quick facts">
+        <dl>
+          <dt>Focus</dt><dd>Operations analytics, reporting automation, responsible AI adoption</dd>
+          <dt>Experience</dt><dd>9+ years across retail, energy, consulting and research</dd>
+          <dt>Education</dt><dd>M.S. and B.E., Industrial Engineering</dd>
+          <dt>Core tools</dt><dd>SQL, Python, Excel (VBA, Power Query), Tableau, Power BI</dd>
+          <dt>Based in</dt><dd>United States, working remotely</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PERSONAL VALUE PROPOSITION -->
+  <section class="block" id="value" aria-labelledby="value-h">
+    <div class="sec-head"><h2 id="value-h">Personal value proposition</h2><span>What I bring</span></div>
+    <p class="pvp">I help teams adopt AI on data they can trust, with results everyone can understand.</p>
+    <ul class="pillars">
+      <li><h3>I check the data first</h3><p>Before trusting a model or a metric, I ask how it was measured and who it might be wrong about. Artifacts 3 and 4 show this habit at work.</p></li>
+      <li><h3>I define “good” before building</h3><p>Clear goals, the right questions up front and firm guardrails matter more than any tool setting. Artifact 2 shows this in a working chatbot.</p></li>
+      <li><h3>I explain it plainly</h3><p>Nine years of reporting to non-technical leaders taught me to put the finding first. Artifact 1 turns 75 years of AI history into one clear answer.</p></li>
+    </ul>
+  </section>
+
+  <!-- TARGET AUDIENCE -->
+  <section class="block" id="audience" aria-labelledby="aud-h">
+    <div class="sec-head"><h2 id="aud-h">Target audience</h2><span>Who this portfolio is for</span></div>
+    <ul class="aud">
+      <li>
+        <span class="tag">Primary</span>
+        <h3>Hiring managers for data and AI-enabled analyst roles</h3>
+        <p>They need someone who can do the analysis and also judge when an AI tool is safe to use. Each artifact shows both: the technical work and the reasoning behind it.</p>
+      </li>
+      <li>
+        <span class="tag">Primary</span>
+        <h3>Operations, finance and analytics leaders starting AI projects</h3>
+        <p>They need help separating real value from hype and spotting data risks before launch. The artifacts on AI history, data quality, bias and privacy speak directly to those decisions.</p>
+      </li>
+      <li class="sec">
+        <span class="tag">Secondary</span>
+        <h3>Educators and teams building AI assistants</h3>
+        <p>The Chef Buddy write-up is a step-by-step guide anyone can follow to build a safe, focused chatbot for learners or staff.</p>
+      </li>
+    </ul>
+    <p class="aud-note">Why it’s relevant: most organizations aren’t short on AI tools, they’re short on people who can connect those tools to reliable data and to clear business decisions. This portfolio is evidence that I can do that.</p>
+  </section>
+
+  <div class="sec-head" id="work"><h2>Selected work</h2><span>4 artifacts</span></div>
+
+  <!-- ARTIFACT 1 -->
+  <article class="case" id="timeline" aria-labelledby="a1-h">
+    <div class="case-meta">
+      <p class="eyebrow">Artifact 1</p>
+      <h3 id="a1-h">AI: From Inception to Today</h3>
+      <dl>
+        <dt>Type</dt><dd>Research synthesis, visual timeline</dd>
+        <dt>Covers</dt><dd>1950 to 2025, 12 milestones, 2 AI winters</dd>
+        <dt>Format</dt><dd>4-slide presentation</dd>
+      </dl>
+      <ul class="toc" aria-label="Artifact 1 sections">
+        <li><a href="#a1-intro">Introduction</a></li>
+        <li><a href="#a1-desc">Description</a></li>
+        <li><a href="#a1-value">Value proposition</a></li>
+        <li><a href="#a1-refs">References</a></li>
+      </ul>
+    </div>
+    <div class="case-body">
+      <section id="a1-intro">
+        <h4>Introduction</h4>
+        <p class="lede">A four-slide history of AI that answers one question: why did progress stall twice, then take off?</p>
+        <p>I traced 75 years of AI through its booms and its two “winters,” when funding collapsed after results fell short of promises. Each milestone names the people and organizations behind it, so the story is about decisions, not just dates.</p>
+      </section>
+
+      <section id="a1-desc">
+        <h4>Description</h4>
+        <h5>Objective</h5>
+        <p>Explain the history of artificial intelligence in a way a busy reader can absorb in two minutes, and identify the conditions that turned decades of slow progress into today’s rapid adoption.</p>
+        <h5>Process</h5>
+        <ol class="steps">
+          <li><strong>Gathered milestones.</strong> I collected candidate events from 1950 to 2025 using original papers and reports wherever possible, such as Turing’s 1950 paper and the 1955 Dartmouth proposal.</li>
+          <li><strong>Framed one question.</strong> Instead of listing everything, I asked why progress stalled twice and then accelerated, and kept only the 12 milestones that help answer it.</li>
+          <li><strong>Marked the winters.</strong> I placed the two funding collapses (mid-1970s and late 1980s to early 1990s) on the same strip as the booms, so the pattern is visible at a glance.</li>
+          <li><strong>Ended on causes.</strong> The final slide names the three drivers of the comeback: better algorithms, large labelled datasets and cheap computing from GPUs and the cloud.</li>
+        </ol>
+        <div class="slides" role="region" aria-label="Timeline slides, scroll sideways for more" tabindex="0">
+          <figure><img src="assets/timeline-1.jpg" alt="Title slide: AI from inception to today, with a strip of boom and winter periods from the 1950s to now" loading="lazy" width="1467" height="825"><figcaption>Booms and winters at a glance</figcaption></figure>
+          <figure><img src="assets/timeline-2.jpg" alt="Timeline from 1950 to 1993: Turing, the Dartmouth Workshop, the first AI winter, the expert systems boom and the second AI winter" loading="lazy" width="1467" height="825"><figcaption>1950–1993: big ideas, two winters</figcaption></figure>
+          <figure><img src="assets/timeline-3.jpg" alt="Timeline from 1997 to 2025: Deep Blue, AlexNet, AlphaGo, the Transformer, GPT-3 and AlphaFold 2, ChatGPT and the generative AI era" loading="lazy" width="1467" height="825"><figcaption>1997–2025: the comeback</figcaption></figure>
+          <figure><img src="assets/timeline-4.jpg" alt="Three drivers of the comeback: better algorithms, big data, and GPUs and the cloud" loading="lazy" width="1467" height="825"><figcaption>What powered it</figcaption></figure>
+        </div>
+        <h5>Tools and tech used</h5>
+        <ul class="chips">
+          <li>Microsoft PowerPoint</li><li>Primary sources and peer-reviewed papers</li><li>Timeline and information design</li>
+        </ul>
+        <a class="btn" href="assets/AI_Timeline.pptx" download>Download the slides (.pptx)</a>
+      </section>
+
+      <section id="a1-value">
+        <h4>Value proposition</h4>
+        <div class="vp">
+          <div><h5>Unique value</h5><p>Most AI timelines are lists of dates. This one is built around a single question and ends with an answer, the three conditions that had to arrive together. It reads like an analysis, not a list.</p></div>
+          <div><h5>Relevance</h5><p>Leaders deciding whether to invest in AI need to know that hype cycles punish anyone who promises more than the evidence supports. For an analyst, the lesson is practical: a model is only as good as the data and compute behind it.</p></div>
+        </div>
+      </section>
+
+      <section id="a1-refs">
+        <h4>References</h4>
+        <ol class="refs">
+          <li>Turing, A. M. (1950). Computing machinery and intelligence. <em>Mind, 59</em>(236), 433–460.</li>
+          <li>Vaswani, A., et al. (2017). Attention is all you need. <em>Advances in Neural Information Processing Systems, 30.</em></li>
+          <li>Russell, S., &amp; Norvig, P. (2021). <em>Artificial intelligence: A modern approach</em> (4th ed.). Pearson.</li>
+        </ol>
+      </section>
+    </div>
+  </article>
+
+  <!-- ARTIFACT 2 -->
+  <article class="case" id="chatbot" aria-labelledby="a2-h">
+    <div class="case-meta">
+      <p class="eyebrow">Artifact 2</p>
+      <h3 id="a2-h">Chef Buddy: Building a Teaching Chatbot</h3>
+      <dl>
+        <dt>Type</dt><dd>AI Lab build, how-to write-up</dd>
+        <dt>Platform</dt><dd>Mizou</dd>
+        <dt>Status</dt><dd>Published, shareable link</dd>
+      </dl>
+      <ul class="toc" aria-label="Artifact 2 sections">
+        <li><a href="#a2-intro">Introduction</a></li>
+        <li><a href="#a2-desc">Description</a></li>
+        <li><a href="#a2-value">Value proposition</a></li>
+        <li><a href="#a2-refs">References</a></li>
+      </ul>
+    </div>
+    <div class="case-body">
+      <section id="a2-intro">
+        <h4>Introduction</h4>
+        <p class="lede">I designed and launched a cooking coach that teaches students to cook, rather than just handing them a recipe.</p>
+        <p>Chef Buddy tailors each recipe to the student’s experience, allergies and kitchen equipment, explains terms like “sauté” as it goes, and ends with one cooking skill or food-science idea. This write-up shows how I built it, step by step, so others can build their own.</p>
+      </section>
+
+      <section id="a2-desc">
+        <h4>Description</h4>
+        <h5>Objective</h5>
+        <p>Build a safe, focused AI assistant that builds students’ cooking confidence. The hard part: students may be young, have allergies, or be working with knives and heat, and a general chatbot will happily answer anything.</p>
+        <h5>Process</h5>
+        <ol class="steps">
+          <li><strong>Defined the job.</strong> I wrote the bot’s instructions around one goal, building students’ confidence, so every answer teaches something and checks understanding with a quick question.</li>
+          <li><strong>Asked before answering.</strong> The bot asks about experience, dietary needs and equipment before it suggests anything, so the recipe fits the person.</li>
+          <li><strong>Set guardrails.</strong> Seven firm rules cover safety: always ask about allergies first, include knife and stove reminders, suggest an adult for younger students, never recommend raw flour or undercooked meat, and stay on topic.</li>
+          <li><strong>Chose not to add a knowledge file.</strong> The base model already knows cooking well. A file only makes sense when the bot must stick to specific material, like class-approved recipes.</li>
+          <li><strong>Packaged it.</strong> I wrote a short description and designed a bright, simple thumbnail that stays readable at a small size.</li>
+          <li><strong>Published and shared.</strong> I published the bot and created a session link. Users just enter a name, no account needed, and I can review their conversations to improve it.</li>
+        </ol>
+        <blockquote class="bot"><cite>Chef Buddy’s opening message</cite>Hi, I’m Chef Buddy! Ready to cook something delicious? Tell me what you’re in the mood for, or list a few ingredients you have, and I’ll help you turn them into a meal. Do you have any food allergies I should know about first?</blockquote>
+        <h5>Tools and tech used</h5>
+        <ul class="chips">
+          <li>Mizou AI chatbot platform</li><li>Large language model (built into Mizou)</li><li>Prompt and instruction design</li><li>Safety guardrails</li><li>Thumbnail graphic design</li>
+        </ul>
+        <a class="btn primary" href="https://mizou.com/login-thread?ID=be3IFaBXkyw9gnTI8AdsvQccAhwVm6xrAgzTYSd3cRk-152734">Try Chef Buddy</a>
+      </section>
+
+      <section id="a2-value">
+        <h4>Value proposition</h4>
+        <div class="vp">
+          <div><h5>Unique value</h5><p>Chef Buddy coaches instead of just answering. It asks before it advises, enforces safety rules it can’t skip, and ends every exchange with something learned. The write-up doubles as a reusable guide for building any focused assistant.</p></div>
+          <div><h5>Relevance</h5><p>Most of the work in a chatbot isn’t the AI, it’s the specification. Any team deploying an assistant for customers, students or staff faces the same choices: what the bot is for, what it must ask first, and what it must never do. It’s the same discipline as scoping an analysis.</p></div>
+        </div>
+      </section>
+
+      <section id="a2-refs">
+        <h4>References</h4>
+        <ol class="refs">
+          <li>Mizou. (n.d.). <em>Mizou: AI chatbots for learning.</em> <a href="https://mizou.com">https://mizou.com</a></li>
+          <li>FoodSafety.gov. (n.d.). <em>Safe minimum internal temperature chart.</em> U.S. Department of Health and Human Services. <a href="https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures">https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures</a></li>
+        </ol>
+      </section>
+    </div>
+  </article>
+
+  <!-- ARTIFACT 3 -->
+  <article class="case" id="assessment" aria-labelledby="a3-h">
+    <div class="case-meta">
+      <p class="eyebrow">Artifact 3</p>
+      <h3 id="a3-h">Rating Myself, Then Rating the Ratings</h3>
+      <dl>
+        <dt>Type</dt><dd>Reflection, survey critique</dd>
+        <dt>Instruments</dt><dd>Change Management and AI/ML Integration Leadership self-assessments</dd>
+      </dl>
+      <ul class="toc" aria-label="Artifact 3 sections">
+        <li><a href="#a3-intro">Introduction</a></li>
+        <li><a href="#a3-desc">Description</a></li>
+        <li><a href="#a3-value">Value proposition</a></li>
+        <li><a href="#a3-refs">References</a></li>
+      </ul>
+    </div>
+    <div class="case-body">
+      <section id="a3-intro">
+        <h4>Introduction</h4>
+        <p class="lede">I took two leadership self-assessments, found my strengths and gaps, and then treated the forms themselves as data to be checked.</p>
+        <p>Both forms told the same story. I’m strongest at understanding: what AI can do, how change works and how people experience it. I’m weakest at execution: project management, spotting skills gaps and working through conflict.</p>
+      </section>
+
+      <section id="a3-desc">
+        <h4>Description</h4>
+        <h5>Objective</h5>
+        <p>Identify my strengths and growth areas as a future AI and change leader, then test whether the self-assessment results could actually be trusted, and propose a better instrument.</p>
+        <h5>Process</h5>
+        <ol class="steps">
+          <li><strong>Completed both assessments</strong> honestly and converted each section score to a percentage so the two forms could be compared.</li>
+          <li><strong>Plotted the results</strong> to separate top strengths from growth areas.</li>
+          <li><strong>Audited my own answers</strong> for inflation and contradictions, the way I’d audit any dataset.</li>
+          <li><strong>Audited the forms</strong> against basic survey-design principles: scale anchors, double-barreled items and comparable scoring.</li>
+          <li><strong>Proposed a redesign</strong> that is harder to inflate.</li>
+        </ol>
+
+        <div class="plot" role="img" aria-label="Dot plot of self-assessment scores. AI/ML Integration Leadership: Technical Understanding 100%, Continuous Improvement 95%, Adoption Strategies 90%, Ethical and Responsible AI 80%, Project Management 60%, Change Readiness 60%. Change Management: Emotional Intelligence 100%, Critical Thinking 100%, Change Management Knowledge 100%, Project Management 80%, Conflict Resolution 70%, Performance Evaluation 70%.">
+          <h6>AI/ML Integration Leadership</h6>
+          <div class="row"><span class="lab">Technical understanding</span><span class="track"><b style="width:100%"></b><i style="left:100%"></i></span><span class="val">100%</span></div>
+          <div class="row"><span class="lab">Continuous improvement</span><span class="track"><b style="width:95%"></b><i style="left:95%"></i></span><span class="val">95%</span></div>
+          <div class="row"><span class="lab">Adoption strategies</span><span class="track"><b style="width:90%"></b><i style="left:90%"></i></span><span class="val">90%</span></div>
+          <div class="row grow"><span class="lab">Ethical and responsible AI</span><span class="track"><b style="width:80%"></b><i style="left:80%"></i></span><span class="val">80%</span></div>
+          <div class="row grow"><span class="lab">Project management</span><span class="track"><b style="width:60%"></b><i style="left:60%"></i></span><span class="val">60%</span></div>
+          <div class="row grow"><span class="lab">Change readiness</span><span class="track"><b style="width:60%"></b><i style="left:60%"></i></span><span class="val">60%</span></div>
+          <h6>Change Management</h6>
+          <div class="row"><span class="lab">Emotional intelligence</span><span class="track"><b style="width:100%"></b><i style="left:100%"></i></span><span class="val">100%</span></div>
+          <div class="row"><span class="lab">Critical thinking</span><span class="track"><b style="width:100%"></b><i style="left:100%"></i></span><span class="val">100%</span></div>
+          <div class="row"><span class="lab">Change management knowledge</span><span class="track"><b style="width:100%"></b><i style="left:100%"></i></span><span class="val">100%</span></div>
+          <div class="row grow"><span class="lab">Project management</span><span class="track"><b style="width:80%"></b><i style="left:80%"></i></span><span class="val">80%</span></div>
+          <div class="row grow"><span class="lab">Conflict resolution</span><span class="track"><b style="width:70%"></b><i style="left:70%"></i></span><span class="val">70%</span></div>
+          <div class="row grow"><span class="lab">Performance evaluation</span><span class="track"><b style="width:70%"></b><i style="left:70%"></i></span><span class="val">70%</span></div>
+          <div class="legend"><span>Top strengths</span><span class="g">Growth areas</span></div>
+        </div>
+
+        <h5>What the audit found</h5>
+        <p>My numbers didn’t hold up well. I rated over half the Change Management items a 5 and never went below a 3 on either form. Some answers contradicted each other: a 5 for guiding teams through tech transitions, but a 3 for preparing people for AI changes.</p>
+        <p>The forms made inflation easy. Only the ends of the 1–5 scale were defined. Several items asked two things at once. Sections were scored out of 10, 15, 20 or 30, so totals couldn’t be compared.</p>
+        <h5>What I’d change</h5>
+        <p>Define every point on the scale with an observable behavior. Require one real example for any 5. Add a colleague’s rating beside my own. Split double-barreled items and standardize the scoring. For the change form, add items drawn from research on successful change leaders, such as explaining why a change is needed and engaging resistant stakeholders instead of avoiding them.</p>
+        <p class="pull">A self-assessment is most useful when it is hard to rate yourself a 5.</p>
+
+        <h5>Tools and tech used</h5>
+        <ul class="chips">
+          <li>Change Management self-assessment</li><li>AI/ML Integration Leadership self-assessment</li><li>Score normalization</li><li>Survey-design audit</li><li>Dot-plot visualization (HTML/CSS)</li>
+        </ul>
+      </section>
+
+      <section id="a3-value">
+        <h4>Value proposition</h4>
+        <div class="vp">
+          <div><h5>Unique value</h5><p>Most reflections stop at “here are my scores.” This one goes a step further and questions whether the scores mean anything, then proposes a fix that would probably lower them. That honesty is the point.</p></div>
+          <div><h5>Relevance</h5><p>Organizations make hiring, training and AI-readiness decisions from surveys like these every day. A leader who can spot a flawed instrument avoids decisions built on flattering but unreliable numbers. It’s the habit I bring to any dataset: before trusting a number, ask how it was measured.</p></div>
+        </div>
+      </section>
+
+      <section id="a3-refs">
+        <h4>References</h4>
+        <ol class="refs">
+          <li>Dunning, D., Heath, C., &amp; Suls, J. M. (2004). Flawed self-assessment: Implications for health, education, and the workplace. <em>Psychological Science in the Public Interest, 5</em>(3), 69–106.</li>
+          <li>Center for Creative Leadership. (n.d.). <em>Change leadership resources.</em> <a href="https://www.ccl.org">https://www.ccl.org</a></li>
+        </ol>
+      </section>
+    </div>
+  </article>
+
+  <!-- ARTIFACT 4 -->
+  <article class="case" id="scenarios" aria-labelledby="a4-h">
+    <div class="case-meta">
+      <p class="eyebrow">Artifact 4</p>
+      <h3 id="a4-h">Data Challenge Scenarios: Thinking Like an ML Practitioner</h3>
+      <dl>
+        <dt>Type</dt><dd>Coached practice exercise, reflection</dd>
+        <dt>Format</dt><dd>3 scenarios with an AI coach that probes, not answers</dd>
+      </dl>
+      <ul class="toc" aria-label="Artifact 4 sections">
+        <li><a href="#a4-intro">Introduction</a></li>
+        <li><a href="#a4-desc">Description</a></li>
+        <li><a href="#a4-value">Value proposition</a></li>
+        <li><a href="#a4-refs">References</a></li>
+      </ul>
+    </div>
+    <div class="case-body">
+      <section id="a4-intro">
+        <h4>Introduction</h4>
+        <p class="lede">I worked through three data problems that machine-learning teams actually face, with an AI coach that kept asking “why?” and “what could still go wrong?”</p>
+        <p>There was no answer key. For each scenario I proposed an approach, defended it, and then dealt with whatever the coach pushed on: a hidden assumption, a tradeoff, or a risk my first answer missed.</p>
+      </section>
+
+      <section id="a4-desc">
+        <h4>Description</h4>
+        <h5>Objective</h5>
+        <p>Practice the judgment ML teams need on real data problems (quality, bias and privacy) where several answers are defensible and naming a technique isn’t enough. I had to explain what each technique does and what it costs.</p>
+        <h5>Process</h5>
+        <p>For each scenario I committed to a plan, backed it with reasons and a way to test it, and revised when a question exposed a gap.</p>
+        <ol class="scen">
+          <li>
+            <span class="num">Scenario 1 · Data quality</span>
+            <h6>Cleaning 800,000 customer reviews</h6>
+            <p>Duplicates, bot spam, many languages, emoji-only reviews, and sentiment labels taken from star ratings.</p>
+            <p><strong>My approach:</strong> remove exact and near-duplicates (using a similarity score) <em>before</em> splitting train and test data, so the model is never graded on reviews it has already seen. Then compare vocabulary and rating distributions before and after cleaning to check that no language or reviewer group quietly disappeared.</p>
+            <p><strong>What changed my mind:</strong> I first wanted to translate everything into one language and give every emoji a fixed number. A sarcastic 🙄 or a Nepali slang phrase carries meaning that this kind of standardizing erases. Unusual data isn’t bad data.</p>
+          </li>
+          <li>
+            <span class="num">Scenario 2 · Bias and scaling</span>
+            <h6>Taking a résumé screener to a new country at 10× volume</h6>
+            <p><strong>Risks I flagged:</strong> foreign credentials and CV formats the model has never seen, recruiter bias and proxies baked into ten years of decisions, a target that predicts past hiring habits rather than job performance, and recruiters rubber-stamping rejections once volume grows tenfold.</p>
+            <p><strong>Evidence I’d require:</strong> a small benchmark labeled from blind résumés by local hiring managers, a staged human-led rollout, and error rates by subgroup. If only 1–3% of applicants are hired, a model that rejects everyone still scores about 97% accuracy.</p>
+          </li>
+          <li>
+            <span class="num">Scenario 3 · Privacy and governance</span>
+            <h6>Two hospitals, one diagnostic model, no raw data shared</h6>
+            <p><strong>My design:</strong> federated learning on a shared data standard (OMOP or FHIR), differential privacy (DP-SGD) on the model updates, verified participants, encrypted traffic, a joint committee so neither hospital controls the model alone, and separate testing at each site.</p>
+            <p><strong>The tradeoff:</strong> limiting any single patient’s influence protects privacy, but it can make the model miss rare conditions, which means more false negatives for exactly the patients who need an accurate diagnosis.</p>
+          </li>
+        </ol>
+        <h5>What I learned</h5>
+        <p>The three scenarios are one story. Messy labels weaken what a model learns, historical decisions can teach it patterns nobody should keep, a model that works in one place can fail in another, and privacy rules decide what data can be used at all. A single accuracy number can hide every one of these problems.</p>
+        <p>The coach raised risks I didn’t: checking whether star ratings are trustworthy labels, giving rejected applicants a way to appeal, monitoring after launch, and defending against poisoned updates from a trusted partner. That’s where I’m focusing next.</p>
+        <p class="pull">Every safeguard leaves some risk behind. The useful question is what’s left.</p>
+        <h5>Tools and tech used</h5>
+        <ul class="chips">
+          <li>AI coaching chatbot</li><li>Near-duplicate detection</li><li>Subgroup error analysis</li><li>Federated learning</li><li>Differential privacy (DP-SGD)</li><li>OMOP / HL7 FHIR data standards</li>
+        </ul>
+      </section>
+
+      <section id="a4-value">
+        <h4>Value proposition</h4>
+        <div class="vp">
+          <div><h5>Unique value</h5><p>This isn’t a list of correct answers. It shows reasoning under pressure: committing to a plan, defending it, and changing my mind on the record when a better argument came along, including the risks I missed.</p></div>
+          <div><h5>Relevance</h5><p>Any organization training or buying an ML model faces these exact problems: dirty data, biased history and privacy limits. Teams need people who ask how a result was measured and who it might be wrong about before it reaches customers, applicants or patients.</p></div>
+        </div>
+      </section>
+
+      <section id="a4-refs">
+        <h4>References</h4>
+        <ol class="refs">
+          <li>Mehrabi, N., Morstatter, F., Saxena, N., Lerman, K., &amp; Galstyan, A. (2021). A survey on bias and fairness in machine learning. <em>ACM Computing Surveys, 54</em>(6), Article 115.</li>
+          <li>McMahan, B., Moore, E., Ramage, D., Hampson, S., &amp; Agüera y Arcas, B. (2017). Communication-efficient learning of deep networks from decentralized data. <em>Proceedings of the 20th International Conference on Artificial Intelligence and Statistics (AISTATS).</em></li>
+          <li>Abadi, M., et al. (2016). Deep learning with differential privacy. <em>Proceedings of the 2016 ACM SIGSAC Conference on Computer and Communications Security</em>, 308–318.</li>
+        </ol>
+      </section>
+    </div>
+  </article>
+</main>
+
+<footer id="contact">
+  <h2>Let’s talk.</h2>
+  <p>I’m open to data analyst roles and projects where data and AI meet real decisions. Email is the fastest way to reach me.</p>
+  <div class="links">
+    <a href="mailto:bijayraj.dahal@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/bijaydahal">LinkedIn</a>
+    <a href="https://github.com/bijaydahal">GitHub</a>
+  </div>
+  <p class="fine">© 2026 Bijay Dahal</p>
+</footer>
+
+</div>
+</body>
+</html>
